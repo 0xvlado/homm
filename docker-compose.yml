@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  wine-vnc:
+    build:
+      context: .
+    container_name: wine-vnc
+    ports:
+      - "5900:5900"  # VNC port
+    environment:
+      - DISPLAY=:1
+      - RESOLUTION=1920x1080x24
+    volumes:
+      - ./data:/root/.wine  # Persist Wine configurations and files
+    tty: true  # Keep the container running
